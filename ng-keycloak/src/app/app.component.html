@@ -27,4 +27,16 @@
       <td>{{ userProfile.emailVerified ? 'Yes' : 'No' }}</td>
     </tr>
   </table>
+
+  <button (click)="getDataDotNet()">Load data .Net</button>
+  <br/>
+  <button (click)="getDataJava()">Load data Java</button>
+  <hr/>
+  <pre>
+    {{data | json}}
+  </pre>
+  <hr/>
+  <pre>
+    {{javadata | json}}
+  </pre>
 </ng-container>

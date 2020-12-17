@@ -24,7 +24,7 @@ namespace dotnet_sample.Controllers
             _logger = logger;
         }
 
-        [Authorize]
+        //[Authorize(Roles ="Administrators")]
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {

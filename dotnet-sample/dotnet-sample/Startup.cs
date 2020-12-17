@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace dotnet_sample
 {
@@ -47,6 +48,26 @@ namespace dotnet_sample
                 };
             });
 
+            // ********************
+            // Setup CORS
+            // ********************
+            var corsBuilder = new CorsPolicyBuilder();
+            corsBuilder.AllowAnyHeader();
+            corsBuilder.AllowAnyMethod();
+            // corsBuilder.AllowAnyOrigin(); // For anyone access.
+            corsBuilder.WithOrigins("http://localhost:4200", "http://localhost", "http://localhost:5001"); // for a specific url. Don't add a forward slash on the end!
+            corsBuilder.AllowCredentials();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", corsBuilder.Build());
+            });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Administrator", policy => policy.RequireClaim("user_roles", "[Administrator]"));
+            });
+
             services.AddControllers();
         }
 
@@ -58,6 +79,7 @@ namespace dotnet_sample
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("AllowAll");
 
             app.UseHttpsRedirection();
 
