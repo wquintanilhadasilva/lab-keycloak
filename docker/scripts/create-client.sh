@@ -1,7 +1,7 @@
 #!/bin/bash
 export PATH=$PATH:$JBOSS_HOME/bin
 
-AUTH_ENDPOINT=http://localhost:8080/auth/
+AUTH_ENDPOINT=http://localhost:8081/auth/
 CLIENT_ID=keycloak-angular
 
 while ! curl -s --head  --request GET $AUTH_ENDPOINT | grep "200 OK" > /dev/null; do

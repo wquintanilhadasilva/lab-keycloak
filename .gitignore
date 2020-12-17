@@ -48,3 +48,6 @@
 **/*.class
 **/target/
 
+**/obj/
+**/bin/
+
