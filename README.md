@@ -1,27 +1,41 @@
 # Keycloak
 
+
+RedHat's KeyCloak practice lab, using Angular, Java (Jersey) and .Net5
+
+The KeyCloak server is configured to run in a docker container (check the docker folder), in a docker-compose file that also uses postgresql.
+
+## Angular
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
-
-## Development server
-
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## .Net 5
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+No secret to run
 
-## Build
+## Java 8 - Jersey
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Java Maven Project: Use mvn commands to compile and deploy app in webserver. I'm using Jboss-EAP70
 
-## Running unit tests
+## Docker
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+run command to start:
 
-## Running end-to-end tests
+```
+docker-compose up --build -d 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
 
-## Further help
+run command to stop:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+docker-compose down
+
+```
+
+Server run in 8081 port.
+
+[KeyCloak Server Admin](http://localhost:8081/auth/admin)
+
+
